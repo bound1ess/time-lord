@@ -2,9 +2,27 @@
     var root = this, timeLord = {};
 
     timeLord.parse = function(timestamp) {
+        // Strip all whitespaces.
+        timestamp = timestamp.replace(/\s/g, "");
+
         return {
-            ms: 5,
+            ms: timeLord.$parse(timestamp, "ms"),
         };
+    };
+
+    // Prefix internals in Angular-like style.
+    timeLord.$parse = function(cleanTimestamp, unit) {
+        var regex = new RegExp("[\.0-9]+" + unit);
+
+        var match = cleanTimestamp.match(regex);
+
+        if (match !== null) {
+            match = match[0].replace(unit, "");
+
+            return match.indexOf(".") !== -1 ? parseFloat(match) : parseInt(match);
+        }
+
+        return null;
     };
 
     // Not ideal, but will do for now.
