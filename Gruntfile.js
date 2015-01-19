@@ -1,5 +1,6 @@
 module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-simple-mocha");
+    grunt.loadNpmTasks("grunt-contrib-uglify");
 
     grunt.initConfig({
         simplemocha: {
@@ -8,16 +9,27 @@ module.exports = function(grunt) {
                 ui: "bdd",
                 reporter: "spec",
             },
-            all: {
+            timeLord: {
                 src: ["test/*.js"],
+            },
+        },
+        uglify: {
+            options: {
+                mangle: false,
+                sourceMap: false,
+                compress: false,
+            },
+            timeLord: {
+                files: {
+                    "dist/time-lord.min.js": ["src/time-lord.js"],
+                },
             },
         },
     });
 
     grunt.registerTask("default", ["test"]);
 
-    grunt.registerTask("test", "Run Mocha tests.", function() {
-        // OK for now.
-        grunt.task.run("simplemocha");
-    });
+    grunt.registerTask("test", "Run Mocha tests.", ["simplemocha"]);
+
+    grunt.registerTask("minify-js", "Minify JS files using Uglify.", ["uglify"]);
 };
