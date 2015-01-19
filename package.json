@@ -1,0 +1,30 @@
+{
+  "name": "time-lord",
+  "version": "1.0.0",
+  "description": "Work with timestamps in specific format",
+  "main": "src/time-lord.js",
+  "scripts": {
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bound1ess/time-lord.git"
+  },
+  "keywords": [
+    "timestamps",
+    "time",
+    "manipulation",
+    "event",
+    "parsing"
+  ],
+  "author": "bound1ess <bound1ess.dev@gmail.com> (https://github.com/bound1ess)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bound1ess/time-lord/issues"
+  },
+  "homepage": "https://github.com/bound1ess/time-lord",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "mocha": "^2.1.0"
+  }
+}
