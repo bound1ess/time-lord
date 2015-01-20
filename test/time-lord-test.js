@@ -36,13 +36,13 @@ describe("timeLord", function() {
     });
 
     it("should make the result human readable", function() {
-        var result = timeLord.forHumans(timeLord.parse("1d"));
+        var result = timeLord.forHumans("1d");
         expect(result).to.equal("1 day");
 
-        result = timeLord.forHumans(timeLord.parse("2d 8.5h"));
+        result = timeLord.forHumans("2d 8.5h");
         expect(result).to.equal("2 days and 8.5 hours");
 
-        result = timeLord.forHumans(timeLord.parse("1d 12h 1m 50s"));
+        result = timeLord.forHumans("1d 12h 1m 50s");
         expect(result).to.equal("1 day, 12 hours, 1 minute and 50 seconds");
     });
 

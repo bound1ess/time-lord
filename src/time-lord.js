@@ -43,6 +43,10 @@
     };
 
     timeLord.forHumans = function(result) {
+        if (typeof result === "string") {
+            return timeLord.forHumans(timeLord.parse(result));
+        }
+
         var tmp = [], filtered = {}, length = 0;
 
         for (var key in result) {
