@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TimeLord browser test</title>
+    </head>
+    <body>
+        <script src="/dist/time-lord.min.js"></script>
+        <script>
+            console.log(timeLord);
+            console.log(timeLord.parse("1d 12h 30m"));
+            console.log(timeLord.forHumans(timeLord.parse("1d 12h")));
+        </script>
+    </body>
+</html>
