@@ -2,17 +2,17 @@
     var root = this, timeLord = {};
 
     timeLord.$words = {
-        ms: ["millisecond", "milliseconds"],
-        secs: ["second", "seconds"],
-        mins: ["minute", "minutes"],
-        hours: ["hour", "hours"],
-        days: ["day", "days"],
+        ms:     ["millisecond", "milliseconds"],
+        secs:   ["second", "seconds"],
+        mins:   ["minute", "minutes"],
+        hours:  ["hour", "hours"],
+        days:   ["day", "days"],
         months: ["month", "months"],
-        years: ["year", "years"],
+        years:  ["year", "years"],
     };
 
     timeLord.forHumans = function(result) {
-        var message = "", tmp = [], filtered = {}, length = 0;
+        var tmp = [], filtered = {}, length = 0;
 
         for (var key in result) {
             if (result[key] !== null) {
@@ -51,6 +51,29 @@
                 + " "
                 + timeLord.$getProperForm(second[0], second[1]);
         }
+
+        // Okay.
+        var last = Object.keys(filtered);
+        last = [last[last.length - 1], filtered[last[last.length - 1]]];
+
+        var messages = [], counter = 0;
+
+        for (key in filtered) {
+            // This way the last element won't be used.
+            if (counter == length - 1) {
+                break;
+            }
+
+            messages.push(filtered[key] + " " + timeLord.$getProperForm(key, filtered[key]));
+
+            counter++;
+        }
+
+        return messages.join(", ")
+             + " and "
+             + last[1] 
+             + " " 
+             + timeLord.$getProperForm(last[0], last[1]);
     };
 
     timeLord.$getProperForm = function(key, length) {
