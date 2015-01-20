@@ -30,26 +30,13 @@
         length = Object.keys(filtered).length;
 
         if (length == 0) {
-            return message;
+            return "";
         }
 
         if (length === 1) {
             var row = timeLord.$accessResultRow(filtered, 0);
 
             return row[1] + " " + timeLord.$getProperForm(row[0], row[1]);
-        }
-
-        if (length === 2) {
-            var first = timeLord.$accessResultRow(filtered, 0),
-                second = timeLord.$accessResultRow(filtered, 1);
-
-            return first[1]
-                + " "
-                + timeLord.$getProperForm(first[0], first[1])
-                + " and "
-                + second[1]
-                + " "
-                + timeLord.$getProperForm(second[0], second[1]);
         }
 
         // Okay.
