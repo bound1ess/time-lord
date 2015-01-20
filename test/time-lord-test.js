@@ -45,4 +45,14 @@ describe("timeLord", function() {
         result = timeLord.forHumans(timeLord.parse("1d 12h 1m 50s"));
         expect(result).to.equal("1 day, 12 hours, 1 minute and 50 seconds");
     });
+
+    it("should convert values to seconds", function() {
+        expect(timeLord.toSeconds(1, "ms")).to.equal(0.001);
+        expect(timeLord.toSeconds(1, "s")).to.equal(1);
+        expect(timeLord.toSeconds(1, "m")).to.equal(60);
+        expect(timeLord.toSeconds(1, "h")).to.equal(3600);
+        expect(timeLord.toSeconds(1, "d")).to.equal(86400);
+        expect(timeLord.toSeconds(1, "mo")).to.equal(null);
+        expect(timeLord.toSeconds(1, "y")).to.equal(null);
+    });
 });

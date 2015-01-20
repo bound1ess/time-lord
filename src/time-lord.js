@@ -1,6 +1,18 @@
 (function() {
     var root = this, timeLord = {};
 
+    timeLord.toSeconds = function(value, unit) {
+        switch (unit) {
+            case "ms": return value / 1000;
+            case "s":  return value;
+            case "m":  return value * 60;
+            case "h":  return value * 3600;
+            case "d":  return value * 86400;
+            case "mo": return null; // This value can be incorrect.
+            case "y":  return null; // Same.
+        }
+    };
+
     timeLord.$words = {
         ms:     ["millisecond", "milliseconds"],
         secs:   ["second", "seconds"],
