@@ -6,7 +6,13 @@
         timestamp = timestamp.replace(/\s/g, "");
 
         return {
-            ms: timeLord.$parse(timestamp, "ms"),
+            ms:     timeLord.$parse(timestamp, "ms"),
+            secs:   timeLord.$parse(timestamp, "s"),
+            mins:   timeLord.$parse(timestamp, "m"),
+            hours:  timeLord.$parse(timestamp, "h"),
+            days:   timeLord.$parse(timestamp, "d"),
+            months: timeLord.$parse(timestamp, "mo"),
+            years:  timeLord.$parse(timestamp, "y"),
         };
     };
 

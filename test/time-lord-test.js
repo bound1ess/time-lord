@@ -11,4 +11,15 @@ describe("timeLord", function() {
         expect(timeLord.parse("7.5ms").ms).to.equal(7.5);
         expect(timeLord.parse(".5ms").ms).to.equal(0.5);
     });
+
+    it("should also parse seconds, minutes, hours, days, months and years", function() {
+        var result = timeLord.parse("1s 1.5m 2h 2.5d 3mo 3.5y");
+
+        expect(result.secs).to.equal(1);
+        expect(result.mins).to.equal(1.5);
+        expect(result.hours).to.equal(2);
+        expect(result.days).to.equal(2.5);
+        expect(result.months).to.equal(3);
+        expect(result.years).to.equal(3.5);
+    });
 });
