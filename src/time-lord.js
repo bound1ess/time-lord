@@ -1,6 +1,56 @@
 (function() {
     var root = this, timeLord = {};
 
+    timeLord.$words = {
+        ms: ["millisecond", "milliseconds"],
+        secs: ["second", "seconds"],
+        mins: ["minute", "minutes"],
+        hours: ["hour", "hours"],
+        days: ["day", "days"],
+        months: ["month", "months"],
+        years: ["year", "years"],
+    };
+
+    timeLord.forHumans = function(result) {
+        var message = "", filtered = {}, length = 0;
+
+        for (var key in result) {
+            if (result[key] !== null) {
+                filtered[key] = result[key];
+            }
+        }
+
+        // JavaScript makes me cry sometimes.
+        length = Object.keys(filtered).length;
+
+        if (length == 0) {
+            return message;
+        }
+
+        if (length === 1) {
+            var row = timeLord.$accessResultRow(filtered, 0);
+
+            return row[1] + " " + timeLord.$getProperForm(row[0], row[1]);
+        }
+    };
+
+    timeLord.$getProperForm = function(key, length) {
+        return length > 1 ? timeLord.$words[key][1] : timeLord.$words[key][0];
+    };
+
+    // ...and again.
+    timeLord.$accessResultRow = function(result, index) {
+        var internalIndex = 0, key;
+
+        for (key in result) {
+            if (internalIndex === index) {
+                return [key, result[key]];
+            }
+
+            internalIndex++;
+        }
+    };
+
     timeLord.map = function(result, keys) {
         var newResult = {};
 
