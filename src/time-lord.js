@@ -12,13 +12,19 @@
     };
 
     timeLord.forHumans = function(result) {
-        var message = "", filtered = {}, length = 0;
+        var message = "", tmp = [], filtered = {}, length = 0;
 
         for (var key in result) {
             if (result[key] !== null) {
-                filtered[key] = result[key];
+                tmp.push([key, result[key]]);
             }
         }
+
+        tmp.reverse().forEach(function(row) {
+            filtered[row[0]] = row[1];
+        });
+
+        delete tmp;
 
         // JavaScript makes me cry sometimes.
         length = Object.keys(filtered).length;
@@ -31,6 +37,19 @@
             var row = timeLord.$accessResultRow(filtered, 0);
 
             return row[1] + " " + timeLord.$getProperForm(row[0], row[1]);
+        }
+
+        if (length === 2) {
+            var first = timeLord.$accessResultRow(filtered, 0),
+                second = timeLord.$accessResultRow(filtered, 1);
+
+            return first[1]
+                + " "
+                + timeLord.$getProperForm(first[0], first[1])
+                + " and "
+                + second[1]
+                + " "
+                + timeLord.$getProperForm(second[0], second[1]);
         }
     };
 
