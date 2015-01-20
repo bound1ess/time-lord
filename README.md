@@ -1,4 +1,4 @@
-# Time-lord
+# Time-lord [![Build Status](https://travis-ci.org/bound1ess/time-lord.svg?branch=master)](https://travis-ci.org/bound1ess/time-lord)
 
 Work with timestamps in a specific format.
 
