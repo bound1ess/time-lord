@@ -26,6 +26,16 @@ TimeLord.humanReadable(timestamp);
 ## Installation...
 ## Tests...
 
+## Code coverage
+
+Aiming for 100%.
+
+```shell
+npm install
+istanbul cover node_modules/mocha/bin/_mocha -- -R spec
+# Check out coverage/ directory.
+```
+
 ## License
 
 MIT.
