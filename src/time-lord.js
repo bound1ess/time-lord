@@ -1,6 +1,16 @@
 (function() {
     var root = this, timeLord = {};
 
+    timeLord.map = function(result, keys) {
+        var newResult = {};
+
+        for (var oldKey in keys) {
+            newResult[keys[oldKey]] = result[oldKey];
+        }
+
+        return newResult;
+    };
+
     timeLord.parse = function(timestamp) {
         // Strip all whitespaces.
         timestamp = timestamp.replace(/\s/g, "");

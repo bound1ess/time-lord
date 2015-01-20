@@ -22,4 +22,16 @@ describe("timeLord", function() {
         expect(result.months).to.equal(3);
         expect(result.years).to.equal(3.5);
     });
+
+    it("should change keys", function() {
+        var result = timeLord.map(timeLord.parse("1ms 2s 3m"), {
+            ms: "milliseconds",
+            secs: "seconds",
+            mins: "minutes",
+        });
+
+        expect(result.milliseconds).to.equal(1);
+        expect(result.seconds).to.equal(2);
+        expect(result.minutes).to.equal(3);
+    });
 });
