@@ -13,7 +13,7 @@
 
     timeLord.parse = function(timestamp) {
         // Strip all whitespaces.
-        timestamp = timestamp.replace(/\s/g, "");
+        timestamp = timestamp.replace(/\s/g, "\n");
 
         return {
             ms:     timeLord.$parse(timestamp, "ms"),
@@ -28,7 +28,7 @@
 
     // Prefix internals in Angular-like style.
     timeLord.$parse = function(cleanTimestamp, unit) {
-        var regex = new RegExp("[\.0-9]+" + unit);
+        var regex = new RegExp("([\.0-9]+" + unit + ")$", "m");
 
         var match = cleanTimestamp.match(regex);
 

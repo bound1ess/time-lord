@@ -6,7 +6,7 @@ describe("timeLord", function() {
         expect(timeLord.parse("ms").ms).to.equal(null);
 
         expect(timeLord.parse(" 5ms").ms).to.equal(5);
-        expect(timeLord.parse("10 ms").ms).to.equal(10);
+        expect(timeLord.parse("10ms ").ms).to.equal(10);
 
         expect(timeLord.parse("7.5ms").ms).to.equal(7.5);
         expect(timeLord.parse(".5ms").ms).to.equal(0.5);
