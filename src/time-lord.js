@@ -69,7 +69,8 @@
         }
 
         if (length === 1) {
-            var row = timeLord.$accessResultRow(filtered, 0);
+            var row = Object.keys(filtered);
+            row = [row[0], filtered[row[0]]];
 
             return row[1] + " " + timeLord.$getProperForm(row[0], row[1]);
         }
@@ -100,19 +101,6 @@
 
     timeLord.$getProperForm = function(key, length) {
         return length > 1 ? timeLord.$words[key][1] : timeLord.$words[key][0];
-    };
-
-    // ...and again.
-    timeLord.$accessResultRow = function(result, index) {
-        var internalIndex = 0, key;
-
-        for (key in result) {
-            if (internalIndex === index) {
-                return [key, result[key]];
-            }
-
-            internalIndex++;
-        }
     };
 
     timeLord.map = function(result, keys) {

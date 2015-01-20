@@ -32,7 +32,7 @@ Aiming for 100%.
 
 ```shell
 npm install
-istanbul cover node_modules/mocha/bin/_mocha -- -R spec
+istanbul cover node_modules/mocha/bin/_mocha
 # Check out coverage/ directory.
 ```
 
