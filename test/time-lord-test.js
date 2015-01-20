@@ -54,5 +54,7 @@ describe("timeLord", function() {
         expect(timeLord.toSeconds(1, "d")).to.equal(86400);
         expect(timeLord.toSeconds(1, "mo")).to.equal(null);
         expect(timeLord.toSeconds(1, "y")).to.equal(null);
+
+        expect(timeLord.toSeconds("1d 1h 1m 1s")).to.equal(86400 + 3600 + 60 + 1);
     });
 });

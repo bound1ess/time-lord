@@ -2,6 +2,25 @@
     var root = this, timeLord = {};
 
     timeLord.toSeconds = function(value, unit) {
+        if (typeof value === "string") {
+            var sum = 0, result = timeLord.map(timeLord.parse(value), {
+                secs:   "s",
+                mins:   "m",
+                hours:  "h",
+                days:   "d",
+                months: "mo",
+                years:  "y",
+            });
+
+            for (var key in result) {
+                if (result[key] !== null) {
+                    sum += timeLord.toSeconds(result[key], key);
+                }
+            }
+
+            return sum;
+        }
+
         switch (unit) {
             case "ms": return value / 1000;
             case "s":  return value;
