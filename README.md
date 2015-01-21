@@ -1,6 +1,6 @@
 # Time-lord [![Build Status](https://travis-ci.org/bound1ess/time-lord.svg?branch=master)](https://travis-ci.org/bound1ess/time-lord)
 
-Work with timestamps in a specific format.
+Work with timestamps in a specific format. Works in Node.js as well as in browsers (agnostic).
 
 ## Idea
 
@@ -15,7 +15,8 @@ var someConfigurationObject = {
 So here is what I came to:
 
 ```JavaScript
-var timestamp = "1y 2mo 15d 10h 23m 30s 240ms";
+var timestamp = "1y 2mo 15d 10h 23m 30s 240ms", timeLord = require("time-lord");
+// If you are using it on client side (browser), timeLord will be already available in `window` scope.
 
 timeLord.parse(timestamp);
 // => {years: 1, months: 2, days: 15, hours: 10, mins: 23, secs: 30, ms: 240}
