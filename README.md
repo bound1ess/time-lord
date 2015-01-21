@@ -8,7 +8,7 @@ I actually needed such a thing for a private project. It is a pretty cool idea, 
 
 ```JavaScript
 var someConfigurationObject = {
-    someTimestamp: "5h20m30s", // => 5 hours, 20 minutes and 30 seconds (ago)
+    someTimestamp: "5h 20m 30s", // => 5 hours, 20 minutes and 30 seconds (ago).
 };
 ```
 
@@ -17,14 +17,40 @@ So here is what I came to:
 ```JavaScript
 var timestamp = "1y 2mo 15d 10h 23m 30s 240ms";
 
-TimeLord.parse(timestamp); // => {y: 1, mo: 2, d: 15, h: 10, m: 23, s: 30, ms: 240}
-TimeLord.humanReadable(timestamp);
+timeLord.parse(timestamp);
+// => {years: 1, months: 2, days: 15, hours: 10, mins: 23, secs: 30, ms: 240}
+
+timeLord.forHumans(timestamp);
 // => "1 year, 2 months, 15 days, 10 hours, 23 minutes, 30 seconds and 240 milliseconds"
+
+timeLord.toSeconds(30, "s");
+// => 1800
+
+timeLord.toSeconds("30s");
+// => 1800
+
+timeLord.map(timeLord.parse(timestamp), {secs: "seconds", mins: "minutes"});
+// => { ... seconds: 30, minutes: 23}
 ```
 
-## Overview...
-## Installation...
-## Tests...
+## Installation
+
+```shell
+npm install time-lord
+```
+
+## Tests
+
+```shell
+grunt test
+```
+
+## Code minification
+
+```shell
+grunt minify-js
+# Check out dist/ directory.
+```
 
 ## Code coverage
 
