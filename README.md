@@ -36,8 +36,18 @@ timeLord.map(timeLord.parse(timestamp), {secs: "seconds", mins: "minutes"});
 
 ## Installation
 
+For usage:
+
 ```shell
 npm install time-lord
+```
+
+For development:
+
+```shell
+git clone https://github.com/bound1ess/time-lord.git
+cd time-lord
+npm install
 ```
 
 ## Tests
